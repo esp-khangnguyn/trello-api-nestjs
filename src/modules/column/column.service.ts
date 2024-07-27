@@ -4,7 +4,7 @@ import { ObjectId } from 'mongodb'
 import { Model, Types } from 'mongoose'
 import { Board } from 'src/models/board.schema'
 import { Card } from 'src/models/card.shema'
-import { Column } from 'src/models/column.schema'
+import { Column, ColumnDocument } from 'src/models/column.schema'
 
 @Injectable()
 export class ColumnService {
@@ -14,7 +14,7 @@ export class ColumnService {
     @InjectModel(Card.name) private readonly cardModel: Model<Card>,
   ) {}
 
-  async create(createColumnDto: any): Promise<Column> {
+  async create(createColumnDto: any): Promise<ColumnDocument> {
     try {
       // gọi tới Model để ghi
       const newColumn = {
@@ -27,7 +27,7 @@ export class ColumnService {
       const createdColumn = await new this.columnModel(newColumn)
       await createdColumn.save()
 
-      const column = await this.columnModel.findById(createdColumn._id)
+      const column: any = await this.columnModel.findById(createdColumn._id)
       const id = new Types.ObjectId(column._id)
 
       if (column) {

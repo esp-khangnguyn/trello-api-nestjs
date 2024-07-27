@@ -1,8 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import { Document, Types } from 'mongoose'
+import { Document, HydratedDocument, Types } from 'mongoose'
+
+export type ColumnDocument = HydratedDocument<Column>
 
 @Schema()
 export class Column extends Document {
+  // @Prop()
+  // _id?: Types.ObjectId
+
   @Prop()
   boardId: Types.ObjectId
 

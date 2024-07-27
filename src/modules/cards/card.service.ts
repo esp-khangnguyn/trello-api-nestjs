@@ -20,10 +20,10 @@ export class CardService {
         _destroy: false,
       }
       const createdcard = new this.cardModel(cardData)
-      createdcard.save()
+      await createdcard.save()
 
-      const card = await this.cardModel.findById(createdcard._id)
-      const id = await new Types.ObjectId(card._id)
+      const card: any = await this.cardModel.findById(createdcard._id)
+      const id = new Types.ObjectId(card._id)
       console.log(card)
 
       if (card) {

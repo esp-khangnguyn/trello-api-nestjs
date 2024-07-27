@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
+import { cloneDeep } from 'lodash'
+import { ObjectId } from 'mongodb'
 import { Model, Types } from 'mongoose'
 import { Board } from 'src/models/board.schema'
-import { cloneDeep } from 'lodash'
-import { Column } from 'src/models/column.schema'
 import { Card } from 'src/models/card.shema'
-import { ObjectId } from 'mongodb'
-import { log } from 'console'
+import { Column } from 'src/models/column.schema'
 
 @Injectable()
 export class BoardService {

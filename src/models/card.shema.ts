@@ -3,6 +3,9 @@ import { Document, Types } from 'mongoose'
 
 @Schema()
 export class Card extends Document {
+  // @Prop()
+  // _id: Types.ObjectId
+
   @Prop()
   boardId: Types.ObjectId
 
